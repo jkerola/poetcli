@@ -1,0 +1,8 @@
+{% if poems -%}
+Poems in '{{ collection.name }}':
+    {% for poem in poems %}
+    {{ poem.created }} ~ {{ poem.content.replace('\n', ' ')[0:20] }}...
+    {% endfor %}
+{% else %}
+Active collection '{{ collection.name }}' contains no poems
+{% endif %}

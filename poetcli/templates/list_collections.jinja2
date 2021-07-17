@@ -1,0 +1,12 @@
+{% if collections -%}
+Collections:
+    {% for collection in collections-%}
+        {% if collection.doc_id == active_collection -%}
+    {{ collection.doc_id }}. {{ collection.name }}      // active
+        {%-else-%}
+    {{ collection.doc_id }}. {{ collection.name }}
+        {%- endif %}
+    {% endfor -%}
+{% else %}
+No collections found in the database
+{% endif %}
