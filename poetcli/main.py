@@ -3,6 +3,7 @@ from cement.core.exc import CaughtSignal
 from .core.exc import poetCLIError
 from .controllers.base import Base
 from .controllers.poemController import PoemController
+from .controllers.exportController import ExportController
 from .controllers.collectionController import CollectionController
 from .utils import databaseUtils
 
@@ -46,7 +47,8 @@ class PoetCLI(App):
         handlers = [
             Base,
             PoemController,
-            CollectionController
+            CollectionController,
+            ExportController
         ]
 
         hooks = [

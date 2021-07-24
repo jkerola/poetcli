@@ -1,10 +1,10 @@
-
 from pytest import raises
-from poetcli.main import poetCLITest
+from poetcli.main import PoetCLITest
+
 
 def test_poetcli():
     # test poetcli without any subcommands or arguments
-    with poetCLITest() as app:
+    with PoetCLITest() as app:
         app.run()
         assert app.exit_code == 0
 
@@ -12,25 +12,14 @@ def test_poetcli():
 def test_poetcli_debug():
     # test that debug mode is functional
     argv = ['--debug']
-    with poetCLITest(argv=argv) as app:
+    with PoetCLITest(argv=argv) as app:
         app.run()
         assert app.debug is True
 
 
-def test_command1():
-    # test command1 without arguments
-    argv = ['command1']
-    with poetCLITest(argv=argv) as app:
+def test_create_poem():
+    argv = []
+    with PoetCLITest(argv=argv) as app:
         app.run()
-        data,output = app.last_rendered
-        assert data['foo'] == 'bar'
-        assert output.find('Foo => bar')
-
-
-    # test command1 with arguments
-    argv = ['command1', '--foo', 'not-bar']
-    with poetCLITest(argv=argv) as app:
-        app.run()
-        data,output = app.last_rendered
-        assert data['foo'] == 'not-bar'
-        assert output.find('Foo => not-bar')
+        output = app.last_rendered
+        assert output is None

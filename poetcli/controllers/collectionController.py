@@ -1,4 +1,3 @@
-
 from cement import Controller, ex
 from ..utils import databaseUtils, controllerUtils
 
@@ -31,27 +30,17 @@ class CollectionController(Controller):
             data = {'collection': collection}
             self.app.render(data, 'select_collection.help.jinja2')
 
-    @ ex(help='create a new collection')
+    @ex(help='create a new collection')
     def collection_new(self):
         databaseUtils.create_poem_collection(self)
 
-    @ ex(help='list all collections')
+    @ex(help='list all collections')
     def collection_list(self):
         data = {
             'collections': controllerUtils.get_all_collections(self),
             'active_collection': databaseUtils.get_active_collection_id(self)
         }
         self.app.render(data, 'list_collections.jinja2')
-
-    @ex(help='list all poems in active collection')
-    def list(self):
-        poems = controllerUtils.get_all_poems_in_active_collection(self)
-        collection = controllerUtils.get_active_collection(self)
-        data = {
-            'poems': poems,
-            'collection': collection
-        }
-        self.app.render(data, 'list_poems.jinja2')
 
     @ex(
         help='permanently delete collection',

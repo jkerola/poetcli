@@ -1,0 +1,7 @@
+Collection {{ collection_name }}
+{% for poem in poems %}
+{{ "~" * 30 }}
+
+~ {{ poem.created }} ~
+{{ poem.content }}
+{%- endfor %}

@@ -1,5 +1,16 @@
 # write poetry on your CLI
 
+## Progress
+
+- [x] Basic poem functionality
+- [x] Basic collection functionality
+- [] Error handling
+- [] Configuration options
+- [] Export options
+- [] Unit tests
+- [] CI/CD configuration
+- [] Release cleanup
+
 ## Installation
 
 ```
